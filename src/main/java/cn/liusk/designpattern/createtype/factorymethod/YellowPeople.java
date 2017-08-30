@@ -10,8 +10,8 @@ package cn.liusk.designpattern.createtype.factorymethod;
  */
 public class YellowPeople extends People {
 
-    public String say() {
-        return "自我介绍:" + super.toString();
+    public void say() {
+        System.out.println("自我介绍:" + super.toString());
     }
 
 }

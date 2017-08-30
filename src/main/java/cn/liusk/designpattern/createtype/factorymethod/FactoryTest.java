@@ -11,6 +11,19 @@ package cn.liusk.designpattern.createtype.factorymethod;
 public class FactoryTest {
 
     public static void main(String[] args) {
+        God nv = new NvWa();
+        God yx = new YaDangXiaWa();
+        People p1 = nv.createPeople();
+        People p2 = yx.createPeople();
+        p1.setAge("23");
+        p1.setName("郭嘉");
+        p1.setSex("男");
+        p1.say();
+
+        p2.setAge("32");
+        p2.setName("曹操");
+        p2.setSex("男");
+        p2.say();
     }
 
 }

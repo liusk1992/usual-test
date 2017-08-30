@@ -8,11 +8,13 @@ package cn.liusk.designpattern.createtype.factorymethod;
  * @author liusk
  * @version $Id: People.java, v 0.1 2017年8月29日 下午4:04:25 liusk Exp $
  */
-public class People {
+public abstract class People {
 
     private String name;
     private String sex;
     private String age;
+
+    public abstract void say();
 
     public String getName() {
         return name;
