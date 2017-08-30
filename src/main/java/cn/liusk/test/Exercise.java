@@ -3,6 +3,8 @@
  */
 package cn.liusk.test;
 
+import java.util.Date;
+
 /**
  * 
  * @author liusk
@@ -30,7 +32,7 @@ public class Exercise {
         int x = rand.nextInt(5);
         System.out.println(x);*/
 
-        test2();
+        test3();
     }
 
     public static void test2() {
@@ -49,5 +51,14 @@ public class Exercise {
             rclt = rclt + "/1";
         }
         System.out.println(rclt);
+    }
+
+    public static void test3() {
+        StringBuilder beforeEncrypt = new StringBuilder("cab4e64f4ea2a0a993bce44febf1d8f5");
+        String now = new Date().getTime() + "";
+        beforeEncrypt.append("&" + now);
+        String afterEncrypt = MD5.GetMD5Code(beforeEncrypt.toString());
+        System.out.println(now);
+        System.out.println(afterEncrypt);
     }
 }

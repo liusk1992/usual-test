@@ -1,7 +1,7 @@
 /**
  * BEYONDSOFT.COM INC
  */
-package cn.liusk.http;
+package cn.liusk.javabase.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;

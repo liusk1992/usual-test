@@ -4,6 +4,8 @@
 package cn.liusk.javabase.annotation;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.liusk.javabase.annotation.Liusk.PermissionType;
 
@@ -31,6 +33,13 @@ public class AnnoTest {
 
         //Method和Class都有isAnnotationPresent方法，这个方法可以判断这个Method和Class上是否有对应的注解
         System.out.println(method.isAnnotationPresent(Liusk.class));
+
+        Liusk l = method.getAnnotation(Liusk.class);
+        PermissionType[] pts = l.value();
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(pts[0].toString(), 1);
+        System.out.println(pts[0].toString());
     }
 
 }

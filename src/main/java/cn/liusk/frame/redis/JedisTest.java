@@ -1,7 +1,7 @@
 /**
  * BEYONDSOFT.COM INC
  */
-package cn.liusk.redis;
+package cn.liusk.frame.redis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
