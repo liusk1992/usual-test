@@ -3,7 +3,10 @@
  */
 package cn.liusk.test;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * 
@@ -31,7 +34,23 @@ public class Exercise {
         Random rand = new Random();
         int x = rand.nextInt(5);
         System.out.println(x);*/
+        List<String> strList = new ArrayList<String>();
+        strList.add("111");
+        strList.add("222");
+        strList.add("333");
+        strList.add("444");
+        strList.add("555");
 
+        strList.stream().filter(s -> s.equals("111"))
+            .forEach(s -> System.out.println(s.toString()));
+
+        Iterator<String> it = strList.iterator();
+        while (it.hasNext()) {
+            if (it.next().equals("111")) {
+                it.remove();
+            }
+        }
+        System.out.println(strList.get(0));
         test3();
     }
 
