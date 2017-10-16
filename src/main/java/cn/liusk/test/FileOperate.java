@@ -25,7 +25,7 @@ public class FileOperate {
         FileInputStream fis = null;
 
         try {
-            file = new File("G:/can_sourcedata_0704.sql");
+            file = new File("G:/Contents.java");
             fis = new FileInputStream(file);
             byte[] buf = new byte[1024];
 
@@ -37,7 +37,7 @@ public class FileOperate {
                     break;
                 }
 
-                String str = new String(buf, 0, len);
+                String str = new String(buf, 0, len, "GBK");
                 System.out.println(str);
                 count++;
             }
