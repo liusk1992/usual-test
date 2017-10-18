@@ -10,7 +10,7 @@ public class StartSocket {
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-        ServerSocket ss = new ServerSocket(10001);
+        ServerSocket ss = new ServerSocket(10000);
 
         testThread tt1 = new testThread(ss);
         testThread tt2 = new testThread(ss);

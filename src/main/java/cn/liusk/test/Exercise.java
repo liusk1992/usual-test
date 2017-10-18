@@ -4,6 +4,7 @@
 package cn.liusk.test;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -37,6 +38,15 @@ public class Exercise {
         sortMap.put("a", 111);
         sortMap.put("c", 333);
         sortMap.put("b", 222);
+
+        HashSet<String> hs = new HashSet<>();
+
+        hs.add("123");
+        hs.add("456");
+        hs.add("123");
+        for (String s : hs) {
+            System.out.println(s);
+        }
 
         for (Object key : sortMap.keySet()) {
             System.out.println(key.toString());
