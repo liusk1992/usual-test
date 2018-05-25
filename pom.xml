@@ -39,11 +39,17 @@
 	    <artifactId>WebCollector</artifactId>
 	    <version>2.52</version>
 	</dependency>
-
+    <!--二维码-->
      <dependency>
          <groupId>QRCode</groupId>
          <artifactId>QRCode</artifactId>
          <version>3.0</version>
      </dependency>
+      <!--kafka-->
+      <dependency>
+          <groupId>org.apache.kafka</groupId>
+          <artifactId>kafka-clients</artifactId>
+          <version>1.1.0</version>
+      </dependency>
   </dependencies>
 </project>

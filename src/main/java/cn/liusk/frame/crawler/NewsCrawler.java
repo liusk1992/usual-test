@@ -10,7 +10,7 @@ import cn.edu.hfut.dmic.webcollector.model.Page;
 import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 
 /**
- * 
+ * 爬虫
  * @author liusk
  * @version $Id: NewsCrawler.java, v 0.1 2017年8月11日 下午2:02:08 liusk Exp $
  */
@@ -26,11 +26,11 @@ public class NewsCrawler extends BreadthCrawler {
         super(crawlPath, autoParse);
         /*start page*/
         //this.addSeed("http://www.cs.zut.edu.cn");
-        this.addSeed("http://www.toutiao.com/ch/news_image");
+        this.addSeed("http://www.zzti.edu.cn/");
 
         /*fetch url like http://news.hfut.edu.cn/show-xxxxxxhtml*/
         //this.addRegex("http://www.cs.zut.edu.cn/info/1633/.*.htm");
-        this.addRegex("http://www.toutiao.com/.*");
+        this.addRegex("http://www.zzti.edu.cn/info/1041/*.htm");
         /*do not fetch jpg|png|gif*/
         this.addRegex("-.*\\.(jpg|png|gif).*");
         /*do not fetch url contains #*/
@@ -39,11 +39,11 @@ public class NewsCrawler extends BreadthCrawler {
 
     public static void main(String[] args) throws Exception {
         NewsCrawler crawler = new NewsCrawler("crawl", true);
-        crawler.setThreads(2);
-        crawler.setTopN(10);
+        crawler.setThreads(50);
+        crawler.setTopN(100);
         //crawler.setResumable(true);
         /*start crawl with depth of 4*/
-        crawler.start(2);
+        crawler.start(4);
     }
 
     /** 
@@ -54,7 +54,7 @@ public class NewsCrawler extends BreadthCrawler {
         String url = page.url();
         System.out.println("-------------------------------------------------" + url);
         /*if page is news page*/
-        if (page.matchUrl("http://www.toutiao.com/.*")) {
+        if (page.matchUrl("http://www.zzti.edu.cn/info/1041/*.htm")) {
             /*we use jsoup to parse page*/
             Document doc = page.doc();
 
@@ -77,13 +77,11 @@ public class NewsCrawler extends BreadthCrawler {
             content = m_html.replaceAll(""); //过滤html标签
             */
 
-            String title = page.doc().select("span[class=ceil-job]").html();
-            String content = page.doc().select("dl[class=job_detail]").html();
+            String title = page.doc().select("td[class=titlestyle67215]").html();
+            //String content = page.doc().select("div[class=name_info]").html();
 
-            System.out.println(page.doc().select("span[class=ceil-job]"));
-            System.out.println("URL:\n" + url);
-            System.out.println("title:\n" + title);
-            System.out.println("content:\n" + content);
+            System.out.println("title--------" + title);
+            //System.out.println("content---------"+content);
 
             /*If you want to add urls to crawl,add them to nextLink*/
             /*WebCollector automatically filters links that have been fetched before*/

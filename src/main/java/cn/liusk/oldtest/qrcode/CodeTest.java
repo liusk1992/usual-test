@@ -1,18 +1,23 @@
-﻿package cn.liusk.oldtest.qrcode;
+/**
+ * BEYONDSOFT.COM INC
+ */
+package cn.liusk.oldtest.qrcode;
 
 import com.swetake.util.Qrcode;
 import jp.sourceforge.qrcode.QRCodeDecoder;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.imageio.ImageIO;
-
-public class QuickResponseCode {
+/**
+ * @author liusk
+ * @version $Id: CodeTest.java, v 0.1 2018/5/24 16:35 liusk Exp $
+ */
+public class CodeTest {
 
     /*****************************对公方法************************/
     /**生成二维码并存储到指定路径
@@ -111,7 +116,7 @@ public class QuickResponseCode {
      * @param content 被转化的文本信息
      * @param imgType 图片的类型
      * @param size 图片的尺寸
-     * @return 
+     * @return
      */
     private BufferedImage qrcodeCommon(String content, String imgType, int size) {
         BufferedImage bufImg = null;
@@ -139,7 +144,7 @@ public class QuickResponseCode {
                 }
             } else {
                 throw new Exception(
-                    "QRCode content bytes length = " + contentBytes.length + " not in [0, 800].");
+                        "QRCode content bytes length = " + contentBytes.length + " not in [0, 800].");
             }
             /*//单纯的向二维码中插入Logo
             Image img = ImageIO.read(new File("G:/liusk.jpg"));
@@ -150,7 +155,7 @@ public class QuickResponseCode {
             int heightLogo = img.getHeight();
             int x = (bufImg.getWidth() - widthLogo) / 2;
             int y = (bufImg.getHeight() - heightLogo) / 2;
-            
+
             g2D.drawImage(img, x, y, widthLogo, heightLogo, null);
             g2D.drawRoundRect(x, y, widthLogo, heightLogo, 10, 10);
             g2D.setStroke(new BasicStroke());
@@ -169,7 +174,7 @@ public class QuickResponseCode {
     /***************************测试生成二维码************************/
     public static void main(String[] args) {
 
-        QuickResponseCode handler = new QuickResponseCode();
+        CodeTest handler = new CodeTest();
 
         String imgPath = "G:/twoDimensionCode.jpg";
 
@@ -178,8 +183,8 @@ public class QuickResponseCode {
         handler.encoder(encoderContent, imgPath, "jpg");
         System.out.println("========encoder success");
 
-        /*String decoderContent = handler.decoder(imgPath);  
-        System.out.println(decoderContent);  
+        /*String decoderContent = handler.decoder(imgPath);
+        System.out.println(decoderContent);
         System.out.println("========decoder success!!!");*/
     }
 

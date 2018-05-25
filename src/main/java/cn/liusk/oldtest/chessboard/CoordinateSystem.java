@@ -1,12 +1,12 @@
 package cn.liusk.oldtest.chessboard;
 
-/**棋盘类
- * 1、根据点坐标判断此点是否存在
- * 2、根据点坐标判断此点是否被占用
- * 3、根据两点坐标判断两点是否在一条直线上
+/**??????
+ * 1??????????????????????
+ * 2??????????????????????
+ * 3??????????????????????????????????
  */
 public class CoordinateSystem {
-    //单例加载
+    //????????
     private static CoordinateSystem coordinateSystem = null;
 
     private CoordinateSystem() {
@@ -18,10 +18,10 @@ public class CoordinateSystem {
         return coordinateSystem;
     }
 
-    //内置坐标系
+    //?????????
     private static Coordinate[][] coordinates = new Coordinate[5][5];
 
-    //坐标系上的四个关键点
+    //????????????????
     private final static Coordinate keyCoordinate1 = new Coordinate(1, 1);
     private final static Coordinate keyCoordinate2 = new Coordinate(1, 3);
     private final static Coordinate keyCoordinate3 = new Coordinate(3, 1);
@@ -192,7 +192,7 @@ public class CoordinateSystem {
         return distance;
     }
 
-    /**调用此方法前必须进行isExistLine判断
+    /**????????????????isExistLine???
      */
     public boolean isSeparate(Coordinate startCoordinate, Coordinate endCoordinate) {
         int startX = startCoordinate.getX();
@@ -202,12 +202,12 @@ public class CoordinateSystem {
         int x_x = Math.abs(endX - startX);
         int y_y = Math.abs(endY - startY);
 
-        //起点和终点重合时认为没有被隔开
+        //??????????????????????
         if (x_x == 0 && y_y == 0) {
             return false;
         } else {
 
-            //在垂直线上的两点之间有没有被隔开
+            //??????????????????????????
             if (x_x == 0) {
                 int cY = startY;
                 int yabsY = (endY - startY) / y_y;
@@ -219,7 +219,7 @@ public class CoordinateSystem {
                 }
             }
 
-            //在水平线上的两点之间有没有被隔开
+            //??????????????????????????
             if (y_y == 0) {
                 int cX = startX;
                 int xabsX = (endX - startX) / x_x;
@@ -231,7 +231,7 @@ public class CoordinateSystem {
                 }
             }
 
-            //在45度角斜线上的两点
+            //??45?????????????
             if (x_x == y_y) {
                 int xabsX = (endX - startX) / x_x;
                 int yabsY = (endY - startY) / y_y;
@@ -250,12 +250,12 @@ public class CoordinateSystem {
         return false;
     }
 
-    //三个点是否在同一条直线上
+    //????????????????????
     public boolean isThreePointLine(Coordinate c1, Coordinate c2, Coordinate c3) {
         return isAcrossCoordinate(c1, c2, c3);
     }
 
-    //该坐标点是否存在棋子
+    //?????????????????
     public boolean isFillPoint(Coordinate coordinate) {
         if (isExistCoordinate(coordinate)) {
             //System.out.println(coordinates[3][0].getPoint().getC());

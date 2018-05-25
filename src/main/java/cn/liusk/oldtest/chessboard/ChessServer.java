@@ -1,4 +1,7 @@
-﻿package cn.liusk.oldtest.chessboard;
+/**
+ * BEYONDSOFT.COM INC
+ */
+package cn.liusk.oldtest.chessboard;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -6,7 +9,11 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class StartSocket {
+/**
+ * @author liusk
+ * @version $Id: ChessServer.java, v 0.1 2018/5/24 16:37 liusk Exp $
+ */
+public class ChessServer {
 
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
@@ -25,10 +32,6 @@ public class StartSocket {
 class testThread implements Runnable {
     private ServerSocket ss;
     private static int   num = 0;
-
-    testThread() {
-
-    }
 
     public testThread(ServerSocket ss) {
         this.ss = ss;
@@ -59,3 +62,4 @@ class testThread implements Runnable {
     }
 
 }
+

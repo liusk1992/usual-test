@@ -1,85 +1,41 @@
+/**
+ * BEYONDSOFT.COM INC
+ */
 package cn.liusk.oldtest.chessboard;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-public class Start {
+/**
+ * @author liusk
+ * @version $Id: ChessSingle.java, v 0.1 2018/5/24 16:42 liusk Exp $
+ */
+public class ChessSingle {
 
     public static void main(String[] args) {
-        CoordinateSystem cs = CoordinateSystem.getInstance();
+        /*CoordinateSystem cs = CoordinateSystem.getInstance();
         cs.initCoordinateSys();
-
-        ServerSocket ss = null;
-        Socket s = null;
-        try {
-            ss = new ServerSocket(10000);
-            System.out.println("服务已开启，等待客户端连接、、、");
-            s = ss.accept();
-
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        }
-        InetAddress ia = s.getInetAddress();
-        System.out.println("client hostAddress:" + ia.getHostAddress());
-        System.out.println("client hostName:" + ia.getHostName());
         System.out.println("初始化");
-        String initStr = cs.print();
-        BufferedReader br = null;
-        BufferedWriter bw = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-            bw.write(initStr);
-            bw.newLine();
-            bw.write("0000");
-            bw.newLine();
-            bw.flush();
-        } catch (IOException e2) {
-            e2.printStackTrace();
-        }
+        cs.print();
+        Scanner scanner = new Scanner(System.in);
         try{
             while(true){
-                String line = br.readLine();
+                String line = scanner.nextLine();
                 if("88".equals(line))
                     break;
                 String outLine = chuli(cs,line);
-                bw.write(outLine);
-                bw.newLine();
-                bw.write("0000");
-                bw.newLine();
-                bw.flush();
+                System.out.println(outLine);
             }
-        }catch(IOException e){
-            try{
-                bw.write("输入格式有误！");
-                bw.newLine();
-                bw.write("1111");
-                bw.newLine();
-                bw.flush();
-            }catch(Exception e1){
-                e1.printStackTrace();
-            }
-        }
-
-        System.out.println("服务关闭");
-        try {
-            br.close();
-            bw.close();
-        } catch (IOException e) {
+            scanner.close();
+        }catch(Exception e){
             e.printStackTrace();
         }
 
+        System.out.println("服务关闭");*/
+        test();
     }
 
     public static String chuli(CoordinateSystem cs, String line){
@@ -97,6 +53,7 @@ public class Start {
             String outLine = move(cs,startPoint,endCoor);
             return outLine;
         }catch(Exception e){
+            e.printStackTrace();
             return "输入格式有误";
         }
 
@@ -166,7 +123,7 @@ public class Start {
                 return cs.print();
             }else{
                 System.out.println();
-                System.out.println("两点之间存在直线但是被隔开");
+                //System.out.println("两点之间存在直线但是被隔开");
                 return "两点之间存在直线但是被隔开";
             }
         }else{
@@ -176,7 +133,7 @@ public class Start {
         }
     }
 
-    public static List<Map<String,Coordinate>> isOnePointToTwoPoint(CoordinateSystem cs,Point point){
+    public static List<Map<String,Coordinate>> isOnePointToTwoPoint(CoordinateSystem cs, Point point){
         List<Map<String,Coordinate>> list = new ArrayList<Map<String,Coordinate>>();
         Coordinate[][] coors = new Coordinate[3][3];
         int x = point.getX();
@@ -342,4 +299,5 @@ public class Start {
         }
         return true;
     }
+
 }
